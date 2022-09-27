@@ -14,7 +14,7 @@ public class DriveTrain extends Subsystem {
 
 WPI_TalonFX rightMotor;
 WPI_TalonFX leftMotor; 
-DifferentialDrive drive; 
+DifferentialDrive driver; 
 
 public DriveTrain()
 {
@@ -22,20 +22,16 @@ public DriveTrain()
   leftMotor = new WPI_TalonFX(2);
   rightMotor.setSafetyEnabled(false);
   leftMotor.setSafetyEnabled(false);
-  drive = new DifferentialDrive(leftMotor, rightMotor);
-
-  
-    setDefaultCommand(new Drive());
-  
+  driver = new DifferentialDrive(leftMotor, rightMotor);
 } 
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new Drive());
+    setDefaultCommand(new Drive());
   }
 
   public void setDrive(double xSpeed, double rSpeed) {
     //drive.arcadeDrive(xSpeed, rSpeed);
-    drive.tankDrive(xSpeed, rSpeed);
+    driver.tankDrive(xSpeed, rSpeed);
   }
 }
